@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login App</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .app-container {
+      text-align: center;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 500px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .option-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 8px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .option-button:hover {
+      background-color: #0056b3;
+    }
+
+    .input-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .input-container input {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .input-container button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .input-container button:hover {
+      background-color: #218838;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .footer a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      .app-container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+
+      .option-button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <h1>Welcome to the App</h1>
+    <h2>Please select an option</h2>
+
+    <button class="option-button" id="user-btn">User</button>
+    <button class="option-button" id="admin-btn">Admin</button>
+
+    <!-- Admin Login Form -->
+    <div class="input-container" id="admin-login">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="validateLogin()">Login</button>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2025 MyApp. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script>
+    // Get buttons
+    const userBtn = document.getElementById('user-btn');
+    const adminBtn = document.getElementById('admin-btn');
+    const adminLogin = document.getElementById('admin-login');
+
+    // User Option: Direct to Google App Script link
+    userBtn.addEventListener('click', () => {
+      window.location.href = 'https://your-google-app-script-url-for-users'; // Replace with the actual link for Users
+    });
+
+    // Admin Option: Show login form
+    adminBtn.addEventListener('click', () => {
+      adminLogin.style.display = 'block';
+    });
+
+    // Validate Admin Login
+    function validateLogin() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === 'glenn' && password === 'password') {
+        // Redirect to the Admin Google App Script link
+        window.location.href = 'https://your-google-app-script-url-for-admin'; // Replace with the actual Admin link
+      } else {
+        alert('Invalid username or password');
+      }
+    }
+  </script>
+
+</body>
+</html>
+
