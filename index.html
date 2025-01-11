@@ -128,6 +128,7 @@
 
     <button class="option-button" id="user-btn">User</button>
     <button class="option-button" id="admin-btn">Admin</button>
+    <button class="option-button" id="track-job-btn">Track your Job Order</button> <!-- New Track Job Order Button -->
 
     <!-- Admin Login Form -->
     <div class="input-container" id="admin-login">
@@ -146,6 +147,7 @@
     const userBtn = document.getElementById('user-btn');
     const adminBtn = document.getElementById('admin-btn');
     const adminLogin = document.getElementById('admin-login');
+    const trackJobBtn = document.getElementById('track-job-btn'); // Track Job Order Button
 
     // User Option: Direct to Google App Script link
     userBtn.addEventListener('click', () => {
@@ -169,8 +171,12 @@
         alert('Invalid username or password');
       }
     }
+
+    // Track Job Order Button: Direct to Google App Script search link
+    trackJobBtn.addEventListener('click', () => {
+      window.location.href = ''; // Replace with the actual Job Order Tracking link
+    });
   </script>
 
 </body>
 </html>
-
