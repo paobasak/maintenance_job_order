@@ -57,6 +57,13 @@
       background-color: #0056b3;
     }
 
+    /* Disabled button style (grayed out) */
+    .disabled-button {
+      background-color: #ccc;
+      color: #888;
+      cursor: not-allowed;
+    }
+
     .input-container {
       display: none;
       margin-top: 20px;
@@ -187,6 +194,7 @@
     <button class="option-button" id="user-btn">User</button>
     <button class="option-button" id="admin-btn">Admin</button>
     <button class="option-button" id="track-job-btn">Track your Job Order</button>
+    <button class="option-button disabled-button" id="file-reservation" disabled>File Reservation - Coming Soon</button>
 
     <!-- Admin Login Form -->
     <div class="input-container" id="admin-login">
