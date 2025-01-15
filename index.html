@@ -15,6 +15,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      position: relative;
     }
 
     .app-container {
@@ -99,6 +100,53 @@
       text-decoration: underline;
     }
 
+    /* Announcement Overlay Styles */
+    #announcement-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      display: none; /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #announcement-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #announcement-box h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    #announcement-box p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    #close-announcement-btn {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #close-announcement-btn:hover {
+      background-color: #ff0000;
+    }
+
     /* Responsive design */
     @media (max-width: 600px) {
       .app-container {
@@ -122,13 +170,23 @@
 </head>
 <body>
 
+  <!-- Announcement Overlay -->
+  <div id="announcement-overlay">
+    <div id="announcement-box">
+      <h3>Important Announcement</h3>
+      <p>Dear valued Reads, we kindly request that when submitting your maintenance job order, please specify your location as accurately as possible. Instead of mentioning only the building, such as '2nd Floor Olcon', kindly provide full details such as 'Room 218, Olcon Building'. For laboratories, please ensure to mention the specific location as each laboratory has a different location. We appreciate your cooperation in helping us serve you better! </p>
+      <p>-Property Administrator Office</p>
+      <button id="close-announcement-btn">Close</button>
+    </div>
+  </div>
+
   <div class="app-container">
     <h1>Welcome to the App</h1>
     <h2>Please select an option</h2>
 
     <button class="option-button" id="user-btn">User</button>
     <button class="option-button" id="admin-btn">Admin</button>
-    <button class="option-button" id="track-job-btn">Track your Job Order</button> <!-- New Track Job Order Button -->
+    <button class="option-button" id="track-job-btn">Track your Job Order</button>
 
     <!-- Admin Login Form -->
     <div class="input-container" id="admin-login">
@@ -147,12 +205,13 @@
     const userBtn = document.getElementById('user-btn');
     const adminBtn = document.getElementById('admin-btn');
     const adminLogin = document.getElementById('admin-login');
-    const trackJobBtn = document.getElementById('track-job-btn'); // Track Job Order Button
+    const trackJobBtn = document.getElementById('track-job-btn');
+    const announcementOverlay = document.getElementById('announcement-overlay');
+    const closeAnnouncementBtn = document.getElementById('close-announcement-btn');
 
     // User Option: Direct to Google App Script link
     userBtn.addEventListener('click', () => {
-      //window.location.href = 'https://paobasak.github.io/advisory/'//advisory
-      window.location.href = 'https://script.google.com/macros/s/AKfycbyIK4XbaOrB7G3SRGoQM3Qg5uwP1erXFlJA_T8VZtU3nMGOrg2ZrA-VcgvByKMu-_k/exec'; // Replace with the actual link for Users
+      window.location.href = 'https://script.google.com/macros/s/AKfycbyIK4XbaOrB7G3SRGoQM3Qg5uwP1erXFlJA_T8VZtU3nMGOrg2ZrA-VcgvByKMu-_k/exec';
     });
 
     // Admin Option: Show login form
@@ -166,8 +225,7 @@
       const password = document.getElementById('password').value;
 
       if (username === 'glenn' && password === 'password') {
-        // Redirect to the Admin Google App Script link
-        window.location.href = 'https://script.google.com/a/macros/usjr.edu.ph/s/AKfycbxvd6NHMw9kNOL8abkRtUjZJRUwZ6RPmT3VdZgPVsLzH3v3ipiq3VVfOTftV0LVPaX8/exec'; // Replace with the actual Admin link
+        window.location.href = 'https://script.google.com/a/macros/usjr.edu.ph/s/AKfycbxvd6NHMw9kNOL8abkRtUjZJRUwZ6RPmT3VdZgPVsLzH3v3ipiq3VVfOTftV0LVPaX8/exec';
       } else {
         alert('Invalid username or password');
       }
@@ -175,8 +233,22 @@
 
     // Track Job Order Button: Direct to Google App Script search link
     trackJobBtn.addEventListener('click', () => {
-      window.location.href = 'https://script.google.com/macros/s/AKfycbyEDWdBG-x0mRaAJAXLxaW2ep7tMZ85S4bv-6AIpTh_5wLmyjnvQPBVRrvROp2R4dM3kQ/exec'; // Replace with the actual Job Order Tracking link
+      window.location.href = 'https://script.google.com/macros/s/AKfycbyEDWdBG-x0mRaAJAXLxaW2ep7tMZ85S4bv-6AIpTh_5wLmyjnvQPBVRrvROp2R4dM3kQ/exec';
     });
+
+    // Show announcement overlay (for demonstration, you can toggle this manually)
+    function showAnnouncement() {
+      announcementOverlay.style.display = 'flex';
+    }
+
+    // Close the announcement overlay
+    closeAnnouncementBtn.addEventListener('click', () => {
+      announcementOverlay.style.display = 'none';
+    });
+
+    // To simulate turning the announcement on/off based on condition
+    // Call `showAnnouncement()` function when you need to display the announcement
+    showAnnouncement();
   </script>
 
 </body>
