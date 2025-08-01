@@ -8714,9 +8714,6 @@
             try {
                 const formData = new FormData();
                 formData.append('action', 'getACConcerns');
-                if (currentUser && currentUser.userType !== 'admin') {
-                    formData.append('department', currentUser.department);
-                }
                 
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL_FORM, {
                     method: 'POST',
