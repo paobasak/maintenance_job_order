@@ -787,7 +787,8 @@
 
             <!-- Messages Section -->
             <div id="messages-section" class="section hidden">
-                <div class="fixed inset-0 top-20 left-64 flex bg-white">
+                <!-- Desktop Layout -->
+                <div class="hidden md:block fixed inset-0 top-20 left-64 flex bg-white">
                     <!-- Users Sidebar -->
                     <div class="w-80 border-r border-gray-200 flex flex-col h-full bg-gray-50">
                         <div class="p-4 border-b border-gray-200 bg-white">
@@ -857,6 +858,79 @@
                                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                        required>
                                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                                    <svg class="w-5 h-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Layout -->
+                <div class="md:hidden flex flex-col h-screen bg-white">
+                    <!-- Mobile Messages Header -->
+                    <div class="bg-white border-b border-gray-200 p-4">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-xl font-bold text-gray-900">Messages</h2>
+                            <button id="mobileChatBackButton" onclick="showMobileUsersList()" class="hidden bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Users List -->
+                    <div id="mobileUsersContainer" class="flex-1 overflow-y-auto bg-white">
+                        <!-- Search Bar -->
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="relative">
+                                <input type="text" id="mobileUserSearchInput" placeholder="Search users..." 
+                                       class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                       oninput="searchMobileUsers()">
+                                <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Users List -->
+                        <div id="mobileUsersList" class="divide-y divide-gray-100">
+                            <!-- Users will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Chat Area -->
+                    <div id="mobileChatContainer" class="hidden flex-1 flex flex-col bg-white">
+                        <!-- Mobile Chat Header -->
+                        <div id="mobileChatHeader" class="p-4 border-b border-gray-200 bg-white flex items-center space-x-3">
+                            <button onclick="showMobileUsersList()" class="bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center overflow-hidden">
+                                <img id="mobileChatUserProfileImage" src="" alt="Profile" class="w-full h-full object-cover hidden">
+                                <span id="mobileChatUserInitials" class="text-white font-semibold text-sm"></span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 id="mobileChatUserName" class="font-semibold text-gray-900"></h3>
+                                <p id="mobileChatUserRole" class="text-sm text-gray-500"></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Messages Container -->
+                        <div id="mobileMessagesContainer" class="flex-1 overflow-y-auto p-4 bg-gray-50">
+                            <!-- Messages will be loaded here -->
+                        </div>
+                        
+                        <!-- Mobile Message Input -->
+                        <div id="mobileMessageInputContainer" class="p-4 border-t border-gray-200 bg-white">
+                            <form id="mobileMessageForm" class="flex space-x-3">
+                                <input type="text" id="mobileMessageInput" placeholder="Type your message..." 
+                                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                       required>
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
                                     <svg class="w-5 h-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                                     </svg>
@@ -1042,8 +1116,8 @@
                             </div>
                             <div class="flex space-x-3">
                                 <button id="printJobOrderBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
-                                    <i class="fas fa-print"></i>
-                                    <span>Print</span>
+                                    <i class="fas fa-download"></i>
+                                    <span id="printBtnText">Print/Download</span>
                                 </button>
                                 <button id="downloadJobOrderBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
                                     <i class="fas fa-download"></i>
@@ -1061,7 +1135,7 @@
                     <div class="mb-4">
                         <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Processing...</h3>
-                        <p class="text-gray-600">Submitting your job order. Please wait.</p>
+                        <p class="text-gray-600 loading-message">Submitting your job order. Please wait.</p>
                     </div>
                 </div>
             </div>
@@ -2299,6 +2373,12 @@
                 console.log('Switching to messages section - instant load with cache');
                 // INSTANT LOAD: Use cached users first for immediate display
                 loadUsersInstant();
+                
+                // Initialize mobile messaging interface
+                setTimeout(() => {
+                    showMobileUsersList(); // Ensure mobile shows users list by default
+                    loadMobileUsersList(); // Load mobile users list
+                }, 100);
             }
             if (sectionName === 'view-job-order') {
                 loadJobOrders();
@@ -2471,7 +2551,16 @@
         
         function printJobOrderFromDetails() {
             if (window.currentJobOrderForDetails) {
-                printJobOrder(window.currentJobOrderForDetails.formNumber);
+                // Check if device is mobile
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    // Use server-side PDF generation for mobile devices
+                    downloadJobOrderPDF(window.currentJobOrderForDetails.formNumber);
+                } else {
+                    // Use traditional print for desktop
+                    printJobOrder(window.currentJobOrderForDetails.formNumber);
+                }
             }
         }
         
@@ -5520,6 +5609,9 @@
                 
                 usersList.insertBefore(selectedUserItem, usersList.firstChild);
             }
+            
+            // Sync with mobile users list
+            loadMobileUsersList();
         }
 
         function searchUsers() {
@@ -6176,6 +6268,22 @@
                     displayMessages(); // Re-render without highlights
                 }, 3000);
             }
+            
+            // Sync with mobile interface
+            syncMobileMessages();
+        }
+        
+        // Sync messages with mobile interface
+        function syncMobileMessages() {
+            const mobileMessagesContainer = document.getElementById('mobileMessagesContainer');
+            const desktopMessagesContainer = document.getElementById('messagesContainer');
+            
+            if (mobileMessagesContainer && desktopMessagesContainer && currentMobileUser) {
+                // Only sync if the mobile interface is visible and has the same user selected
+                if (!mobileMessagesContainer.closest('.hidden')) {
+                    mobileMessagesContainer.innerHTML = desktopMessagesContainer.innerHTML;
+                }
+            }
         }
 
         async function markMessagesAsRead() {
@@ -6385,6 +6493,170 @@
                 });
             }
         });
+
+        // ====== MOBILE MESSAGING FUNCTIONS ======
+        
+        // Mobile messaging state
+        let currentMobileUser = null;
+        
+        // Show mobile users list and hide chat
+        function showMobileUsersList() {
+            const usersContainer = document.getElementById('mobileUsersContainer');
+            const chatContainer = document.getElementById('mobileChatContainer');
+            const backButton = document.getElementById('mobileChatBackButton');
+            
+            usersContainer.classList.remove('hidden');
+            chatContainer.classList.add('hidden');
+            backButton.classList.add('hidden');
+            
+            // Update mobile users list if not already loaded
+            loadMobileUsersList();
+        }
+        
+        // Show mobile chat and hide users list
+        function showMobileChatArea() {
+            const usersContainer = document.getElementById('mobileUsersContainer');
+            const chatContainer = document.getElementById('mobileChatContainer');
+            const backButton = document.getElementById('mobileChatBackButton');
+            
+            usersContainer.classList.add('hidden');
+            chatContainer.classList.remove('hidden');
+            backButton.classList.remove('hidden');
+        }
+        
+        // Load users list for mobile (sync with desktop users list)
+        function loadMobileUsersList() {
+            const mobileUsersList = document.getElementById('mobileUsersList');
+            const desktopUsersList = document.getElementById('usersList');
+            
+            if (desktopUsersList && mobileUsersList) {
+                // Copy content from desktop users list and update onclick handlers
+                const desktopContent = desktopUsersList.innerHTML;
+                const mobileContent = desktopContent.replace(/selectUser\(/g, 'selectMobileUser(');
+                mobileUsersList.innerHTML = mobileContent;
+            }
+        }
+        
+        // Select user for mobile chat
+        function selectMobileUser(user) {
+            currentMobileUser = user;
+            
+            // Update mobile chat header
+            const userName = document.getElementById('mobileChatUserName');
+            const userRole = document.getElementById('mobileChatUserRole');
+            const userInitials = document.getElementById('mobileChatUserInitials');
+            const userProfileImage = document.getElementById('mobileChatUserProfileImage');
+            
+            if (userName) userName.textContent = user.fullName || user.username;
+            if (userRole) userRole.textContent = user.userType || 'User';
+            
+            // Update profile picture/initials
+            if (user.profilePicture) {
+                userProfileImage.src = user.profilePicture;
+                userProfileImage.classList.remove('hidden');
+                userInitials.classList.add('hidden');
+            } else {
+                userProfileImage.classList.add('hidden');
+                userInitials.classList.remove('hidden');
+                const names = (user.fullName || user.username).split(' ');
+                const initials = names.map(name => name.charAt(0)).join('').substring(0, 2).toUpperCase();
+                userInitials.textContent = initials;
+            }
+            
+            // Load messages for this user
+            loadMobileMessages(user);
+            
+            // Show chat area
+            showMobileChatArea();
+            
+            // Also update the desktop selection (to keep them in sync)
+            if (typeof selectUser === 'function') {
+                selectUser(user);
+            }
+        }
+        
+        // Load messages for mobile chat
+        function loadMobileMessages(user) {
+            const mobileMessagesContainer = document.getElementById('mobileMessagesContainer');
+            const desktopMessagesContainer = document.getElementById('messagesContainer');
+            
+            if (desktopMessagesContainer && mobileMessagesContainer) {
+                // Copy messages from desktop container
+                mobileMessagesContainer.innerHTML = desktopMessagesContainer.innerHTML;
+            }
+        }
+        
+        // Search users in mobile view
+        function searchMobileUsers() {
+            const searchInput = document.getElementById('mobileUserSearchInput');
+            const usersList = document.getElementById('mobileUsersList');
+            
+            if (!searchInput || !usersList) return;
+            
+            const searchTerm = searchInput.value.toLowerCase();
+            const userItems = usersList.querySelectorAll('[onclick*="selectMobileUser"]');
+            
+            userItems.forEach(item => {
+                const userName = item.textContent.toLowerCase();
+                if (userName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Send message from mobile
+        async function sendMobileMessage(messageText) {
+            if (!currentMobileUser) return;
+            
+            // Clear mobile input immediately
+            const mobileMessageInput = document.getElementById('mobileMessageInput');
+            if (mobileMessageInput) mobileMessageInput.value = '';
+            
+            // Use the existing sendMessage function but ensure mobile messages container is updated
+            if (typeof sendMessage === 'function') {
+                await sendMessage(messageText);
+                
+                // Update mobile messages after sending
+                setTimeout(() => {
+                    if (currentMobileUser) {
+                        loadMobileMessages(currentMobileUser);
+                    }
+                }, 500);
+            }
+        }
+        
+        // Initialize mobile message form
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMessageForm = document.getElementById('mobileMessageForm');
+            const mobileMessageInput = document.getElementById('mobileMessageInput');
+            
+            if (mobileMessageForm) {
+                mobileMessageForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const messageText = mobileMessageInput.value.trim();
+                    if (messageText && currentMobileUser) {
+                        sendMobileMessage(messageText);
+                    }
+                });
+            }
+            
+            // Add Enter key support for mobile
+            if (mobileMessageInput) {
+                mobileMessageInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        const messageText = mobileMessageInput.value.trim();
+                        if (messageText && currentMobileUser) {
+                            sendMobileMessage(messageText);
+                        }
+                    }
+                });
+            }
+        });
+        
+        // ====== END MOBILE MESSAGING FUNCTIONS ======
 
         // Reservation Modal functions
         function openReservationModal() {
@@ -7815,8 +8087,8 @@
                             <button onclick="event.stopPropagation(); openJobOrderDetailsModal(${index})" class="text-blue-600 hover:text-blue-700 mr-2" title="View Details">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <button onclick="event.stopPropagation(); printJobOrder('${order.formNumber}')" class="text-green-600 hover:text-green-700" title="Print">
-                                <i class="fas fa-print"></i>
+                            <button onclick="event.stopPropagation(); printJobOrder('${order.formNumber}')" class="text-green-600 hover:text-green-700 print-job-btn" title="Print/Download PDF" data-form-number="${order.formNumber}">
+                                <i class="fas fa-download"></i>
                             </button>
                         </td>
                     </tr>
@@ -8100,12 +8372,117 @@
         function printJobOrder(formNumber) {
             const order = jobOrders.find(o => o.formNumber === formNumber);
             if (order && order.printContent) {
-                const printWindow = window.open('', '_blank');
-                printWindow.document.write(order.printContent);
-                printWindow.document.close();
-                printWindow.print();
+                // Check if device is mobile
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    // Use server-side PDF generation for mobile devices
+                    downloadJobOrderPDF(formNumber);
+                } else {
+                    // Use traditional print for desktop
+                    const printWindow = window.open('', '_blank');
+                    printWindow.document.write(order.printContent);
+                    printWindow.document.close();
+                    printWindow.print();
+                }
             } else {
                 alert('Print content not available for this job order.');
+            }
+        }
+
+        // Show loading spinner with custom message
+        function showLoadingSpinner(message = 'Loading...') {
+            const overlay = document.getElementById('loadingOverlay');
+            const messageEl = overlay.querySelector('.loading-message');
+            if (messageEl) {
+                messageEl.textContent = message;
+            }
+            overlay.classList.remove('hidden');
+        }
+
+        // Hide loading spinner
+        function hideLoadingSpinner() {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.classList.add('hidden');
+        }
+
+        // Show notification with different types
+        function showNotification(message, type = 'info') {
+            // Create notification element if it doesn't exist
+            let notification = document.getElementById('notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.className = 'fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full';
+                document.body.appendChild(notification);
+            }
+            
+            // Set colors based on type
+            const colors = {
+                success: 'bg-green-500 text-white',
+                error: 'bg-red-500 text-white',
+                warning: 'bg-yellow-500 text-black',
+                info: 'bg-blue-500 text-white'
+            };
+            
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 ${colors[type] || colors.info}`;
+            notification.textContent = message;
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+            }, 5000);
+        }
+        async function downloadJobOrderPDF(formNumber) {
+            try {
+                showLoadingSpinner('Generating PDF...');
+                
+                const formData = new FormData();
+                formData.append('action', 'generateJobOrderPDF');
+                formData.append('formNumber', formNumber);
+                
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                hideLoadingSpinner();
+                
+                if (result.success) {
+                    // Create a temporary link to download the PDF
+                    const link = document.createElement('a');
+                    link.href = result.downloadUrl;
+                    link.download = `Job_Order_${formNumber}.pdf`;
+                    link.target = '_blank';
+                    
+                    // For iOS Safari, we need to use a different approach
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        // Open in new tab for iOS
+                        window.open(result.downloadUrl, '_blank');
+                        showNotification('PDF opened in new tab. You can save it from there.', 'info');
+                    } else {
+                        // Standard download for Android and other browsers
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        showNotification('PDF download started!', 'success');
+                    }
+                    
+                } else {
+                    console.error('PDF generation failed:', result.error);
+                    showNotification('Failed to generate PDF: ' + result.error, 'error');
+                }
+                
+            } catch (error) {
+                hideLoadingSpinner();
+                console.error('Error downloading PDF:', error);
+                showNotification('Error downloading PDF. Please try again.', 'error');
             }
         }
         
@@ -8583,10 +8960,19 @@
             // Add event listeners
             document.getElementById('printJobOrderBtn').onclick = function() {
                 if (currentPrintContent) {
-                    const printWindow = window.open('', '_blank');
-                    printWindow.document.write(currentPrintContent);
-                    printWindow.document.close();
-                    printWindow.print();
+                    // Check if device is mobile
+                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                    
+                    if (isMobile) {
+                        // Use server-side PDF generation for mobile devices
+                        downloadJobOrderPDF(formNumberSpan.textContent);
+                    } else {
+                        // Use traditional print for desktop
+                        const printWindow = window.open('', '_blank');
+                        printWindow.document.write(currentPrintContent);
+                        printWindow.document.close();
+                        printWindow.print();
+                    }
                 }
             };
             
@@ -8625,15 +9011,13 @@
             currentPrintContent = null;
         }
 
-        // Loading Overlay Functions
-        function showLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.classList.remove('hidden');
+        // Loading Overlay Functions (keeping backward compatibility)
+        function showLoadingOverlay(message = 'Submitting your job order. Please wait.') {
+            showLoadingSpinner(message);
         }
 
         function hideLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.classList.add('hidden');
+            hideLoadingSpinner();
         }
         
         // ====== AIRCON CONCERNS FUNCTIONALITY ======
@@ -9103,6 +9487,20 @@
 
         // Initialize the app
         window.addEventListener('DOMContentLoaded', function() {
+            // Detect mobile device and update button text
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // Update button text for mobile devices
+                setTimeout(() => {
+                    const printBtnText = document.getElementById('printBtnText');
+                    const modalPrintBtnText = document.getElementById('modalPrintBtnText');
+                    
+                    if (printBtnText) printBtnText.textContent = 'Download PDF';
+                    if (modalPrintBtnText) modalPrintBtnText.textContent = 'Download PDF';
+                }, 100);
+            }
+            
             if (checkAuthentication()) {
                 // Load all data - each function has its own loading overlay
                 fetchReservations();
@@ -9319,8 +9717,8 @@
                 <div class="flex justify-between items-center">
                     <div class="flex space-x-3">
                         <button onclick="printJobOrderFromDetails()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center space-x-2">
-                            <i class="fas fa-print"></i>
-                            <span>Print</span>
+                            <i class="fas fa-download"></i>
+                            <span id="modalPrintBtnText">Print/Download PDF</span>
                         </button>
                     </div>
                     <div class="flex space-x-3">
