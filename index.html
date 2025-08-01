@@ -76,6 +76,8 @@
                 position: fixed;
                 z-index: 40;
                 transform: translateX(-100%);
+                top: 5rem; /* Account for header height */
+                height: calc(100vh - 5rem);
             }
             
             .sidebar.mobile-open {
@@ -91,6 +93,11 @@
                 inset: 0;
                 background-color: rgba(0, 0, 0, 0.5);
                 z-index: 30;
+                display: none;
+            }
+            
+            .sidebar-overlay-visible {
+                display: block !important;
             }
             
             /* Job Order Card Layout for Mobile */
@@ -2326,27 +2333,40 @@
         
         // Mobile sidebar functions
         function toggleMobileSidebar() {
+            console.log('Toggle mobile sidebar called');
             const sidebar = document.getElementById('sidebar');
             const mobileOverlay = document.getElementById('mobileOverlay');
             
-            if (sidebar.classList.contains('sidebar-mobile-open')) {
+            console.log('Sidebar element:', sidebar);
+            console.log('Mobile overlay element:', mobileOverlay);
+            
+            if (sidebar.classList.contains('mobile-open')) {
+                console.log('Sidebar is open, closing...');
                 closeMobileSidebar();
             } else {
-                sidebar.classList.add('sidebar-mobile-open');
+                console.log('Sidebar is closed, opening...');
+                sidebar.classList.add('mobile-open');
                 mobileOverlay.classList.remove('hidden');
                 mobileOverlay.classList.add('sidebar-overlay-visible');
                 document.body.style.overflow = 'hidden';
+                
+                console.log('Sidebar classes after opening:', sidebar.classList.toString());
+                console.log('Overlay classes after opening:', mobileOverlay.classList.toString());
             }
         }
         
         function closeMobileSidebar() {
+            console.log('Close mobile sidebar called');
             const sidebar = document.getElementById('sidebar');
             const mobileOverlay = document.getElementById('mobileOverlay');
             
-            sidebar.classList.remove('sidebar-mobile-open');
+            sidebar.classList.remove('mobile-open');
             mobileOverlay.classList.add('hidden');
             mobileOverlay.classList.remove('sidebar-overlay-visible');
             document.body.style.overflow = '';
+            
+            console.log('Sidebar classes after closing:', sidebar.classList.toString());
+            console.log('Overlay classes after closing:', mobileOverlay.classList.toString());
         }
         
         // Job Order functions
