@@ -7712,12 +7712,6 @@
             try {
                 const formData = new FormData();
                 formData.append('action', 'getJobOrders');
-                if (currentUser) {
-                    formData.append('username', currentUser.username);
-                    console.log('Loading job orders for user:', currentUser.username);
-                } else {
-                    console.log('Loading job orders - no current user');
-                }
                 
                 console.log('Sending request to:', GOOGLE_APPS_SCRIPT_URL_FORM);
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL_FORM, {
