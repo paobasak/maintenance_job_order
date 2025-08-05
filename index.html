@@ -2449,9 +2449,9 @@
             }
         }
         
-        function printJobOrderFromDetails() {
+        async function printJobOrderFromDetails() {
             if (window.currentJobOrderForDetails) {
-                printJobOrder(window.currentJobOrderForDetails.formNumber);
+                await printJobOrder(window.currentJobOrderForDetails.formNumber);
             }
         }
         
@@ -7795,7 +7795,7 @@
                             <button onclick="event.stopPropagation(); openJobOrderDetailsModal(${index})" class="text-blue-600 hover:text-blue-700 mr-2" title="View Details">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <button onclick="event.stopPropagation(); printJobOrder('${order.formNumber}')" class="text-green-600 hover:text-green-700" title="Print">
+                            <button onclick="event.stopPropagation(); printJobOrder('${order.formNumber}').catch(console.error)" class="text-green-600 hover:text-green-700" title="Print">
                                 <i class="fas fa-print"></i>
                             </button>
                         </td>
@@ -8076,16 +8076,51 @@
             }
         }
         
-        // Print job order (placeholder - could reuse existing print functionality)
-        function printJobOrder(formNumber) {
+        // Print job order - regenerates print content from form data
+        async function printJobOrder(formNumber) {
             const order = jobOrders.find(o => o.formNumber === formNumber);
-            if (order && order.printContent) {
-                const printWindow = window.open('', '_blank');
-                printWindow.document.write(order.printContent);
-                printWindow.document.close();
-                printWindow.print();
-            } else {
-                alert('Print content not available for this job order.');
+            if (!order) {
+                alert('Job order not found.');
+                return;
+            }
+
+            try {
+                // Show loading overlay
+                showLoadingOverlay();
+
+                // Call backend to generate fresh print content
+                const formDataToSend = new FormData();
+                formDataToSend.append('action', 'generatePrintContent');
+                formDataToSend.append('formNumber', order.formNumber);
+                formDataToSend.append('department', order.department);
+                formDataToSend.append('dateFiled', formatDate(order.dateFiled));
+                formDataToSend.append('location', order.location);
+                formDataToSend.append('natureOfWork', order.natureOfWork);
+                formDataToSend.append('requestedBy', order.requestedBy);
+
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL_FORM, {
+                    method: 'POST',
+                    body: formDataToSend
+                });
+
+                const result = await response.json();
+                
+                // Hide loading overlay
+                hideLoadingOverlay();
+
+                if (result.success && result.printContent) {
+                    // Open new window and print
+                    const printWindow = window.open('', '_blank');
+                    printWindow.document.write(result.printContent);
+                    printWindow.document.close();
+                    printWindow.print();
+                } else {
+                    alert('Unable to generate print content. Error: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                hideLoadingOverlay();
+                console.error('Error generating print content:', error);
+                alert('Unable to generate print content. Please try again.');
             }
         }
         
@@ -9298,7 +9333,7 @@
             <div class="p-6 border-t border-gray-200 bg-gray-50 flex-shrink-0">
                 <div class="flex justify-between items-center">
                     <div class="flex space-x-3">
-                        <button onclick="printJobOrderFromDetails()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center space-x-2">
+                        <button onclick="printJobOrderFromDetails().catch(console.error)" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center space-x-2">
                             <i class="fas fa-print"></i>
                             <span>Print</span>
                         </button>
