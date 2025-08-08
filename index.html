@@ -1455,6 +1455,7 @@
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Filed</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nature of Work</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Requested By</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
@@ -8131,6 +8132,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(order.dateFiled)}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.department || 'N/A'}</td>
                         <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate" title="${order.location || 'N/A'}">${order.location || 'N/A'}</td>
+                        <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate" title="${order.natureOfWork || 'N/A'}">${order.natureOfWork || 'N/A'}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.requestedBy || 'N/A'}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(order.status)}">
