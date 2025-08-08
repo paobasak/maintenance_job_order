@@ -21,6 +21,25 @@
     <style>
         .auth-bg {
             background: white;
+            background-image: url('https://edp.usjr.edu.ph/public/images/usjr_trans.png');
+            background-repeat: repeat;
+            background-size: 150px auto;
+            position: relative;
+        }
+        .auth-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            opacity: 0.9;
+            z-index: 0;
+        }
+        .auth-bg > * {
+            position: relative;
+            z-index: 1;
         }
         .glass-effect {
             backdrop-filter: blur(10px);
@@ -95,12 +114,12 @@
             </div>
         </div>
 
-        <!-- Logo Section -->
+        <!-- Logo Section
         <div class="text-center mb-8">
             <img src="https://edp.usjr.edu.ph/public/images/usjr_trans.png" style="display: block; border: 6px solid red !important; margin: 0 auto;">
             <h1 class="text-3xl font-bold text-usjr-green mb-2">Property - Basak</h1>
             <p class="text-gray-700">VJOMS</p>
-        </div>
+        </div>  -->
 
         <!-- Auth Form Container -->
         <div class="bg-white max-w-md w-full mx-auto shadow-2xl">
@@ -699,4 +718,5 @@
     </script>
 </body>
 </html>
+
 
