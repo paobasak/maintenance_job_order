@@ -53,6 +53,130 @@
             background-color: #ffebee !important;
         }
         
+        /* Country Flag Background Classes - Global (for both mobile and desktop) */
+        .flag-usa::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg');
+        }
+
+        .flag-uk::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_(3-5).svg');
+        }
+
+        .flag-canada::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_(Pantone).svg');
+        }
+
+        .flag-australia::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_(converted).svg');
+        }
+
+        .flag-japan::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg');
+        }
+
+        .flag-south-korea::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg');
+        }
+
+        .flag-germany::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg');
+        }
+
+        .flag-france::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg');
+        }
+
+        .flag-italy::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg');
+        }
+
+        .flag-spain::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg');
+        }
+
+        .flag-brazil::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg');
+        }
+
+        .flag-mexico::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg');
+        }
+
+        .flag-india::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg');
+        }
+
+        .flag-china::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg');
+        }
+
+        .flag-russia::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg');
+        }
+
+        .flag-netherlands::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg');
+        }
+
+        .flag-sweden::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Sweden.svg');
+        }
+
+        .flag-norway::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg');
+        }
+
+        .flag-switzerland::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/08/Flag_of_Switzerland_(Pantone).svg');
+        }
+
+        .flag-south-africa::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg');
+        }
+
+        .flag-singapore::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Singapore.svg');
+        }
+
+        .flag-thailand::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_Thailand.svg');
+        }
+
+        .flag-philippines::before {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_the_Philippines.svg');
+        }
+
+        /* Flag backgrounds for table rows - Desktop and Mobile */
+        .job-order-row {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-order-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .job-order-row:hover::before {
+            opacity: 0.08;
+        }
+
+        /* Ensure table cell content stays above background */
+        .job-order-row td {
+            position: relative;
+            z-index: 2;
+        }
+        
         /* Mobile-Friendly Styles */
         .sidebar {
             transition: transform 0.3s ease, width 0.3s ease;
@@ -64,6 +188,10 @@
         
         .main-content {
             transition: margin-left 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         
         .main-content-expanded {
@@ -102,6 +230,34 @@
                 background: white;
                 cursor: pointer;
                 transition: all 0.2s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Random Country Flag Background for Job Order Cards */
+            .job-order-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.1;
+                z-index: 1;
+                transition: opacity 0.3s ease;
+            }
+
+            .job-order-card:hover::before {
+                opacity: 0.15;
+            }
+
+            /* Ensure content stays above background */
+            .job-order-card > * {
+                position: relative;
+                z-index: 2;
             }
             
             .job-order-card:hover {
@@ -395,6 +551,172 @@
                 width: calc(100% - 2rem);
             }
         }
+        
+        /* Submit Button Background Image */
+        .submit-button-bg {
+            background-image: url('https://i.imgur.com/jq1xaI4.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .submit-button-bg span {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Header Philippine Flag Background */
+        .header-flag-bg {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_the_Philippines.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .header-flag-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        
+        .header-flag-bg > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Navigation Philippine Flag Background */
+        .nav-flag-bg {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_the_Philippines.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .nav-flag-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            border-radius: 0.5rem;
+        }
+        
+        .nav-flag-bg > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Active navigation with stronger flag visibility */
+        .nav-flag-bg.bg-blue-50::before {
+            background: rgba(239, 246, 255, 0.9);
+        }
+
+        /* Rope Border Style - Advanced Pattern */
+        .rope-border {
+            position: relative;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .rope-border::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    #8B4513 0px,
+                    #A0522D 2px,
+                    #CD853F 4px,
+                    #D2691E 6px,
+                    #CD853F 8px,
+                    #A0522D 10px,
+                    #8B4513 12px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    #8B4513 0px,
+                    #A0522D 2px,
+                    #CD853F 4px,
+                    #D2691E 6px,
+                    #CD853F 8px,
+                    #A0522D 10px,
+                    #8B4513 12px
+                );
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .rope-border::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    #654321 0px,
+                    #8B4513 1px,
+                    #A0522D 2px,
+                    #CD853F 3px,
+                    #D2691E 4px,
+                    #CD853F 5px,
+                    #A0522D 6px,
+                    #8B4513 7px,
+                    #654321 8px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    #654321 0px,
+                    #8B4513 1px,
+                    #A0522D 2px,
+                    #CD853F 3px,
+                    #D2691E 4px,
+                    #CD853F 5px,
+                    #A0522D 6px,
+                    #8B4513 7px,
+                    #654321 8px
+                );
+            border-radius: 18px;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .rope-border:hover::before {
+            opacity: 0.9;
+        }
+
+        .rope-border:hover::after {
+            opacity: 0.9;
+        }
+
+        /* Enhanced rope border visibility for modals */
+        .modal-backdrop .rope-border {
+            margin: 20px; /* Ensure space for the extended border */
+        }
+
+        .modal-backdrop .rope-border::before,
+        .modal-backdrop .rope-border::after {
+            opacity: 0.9; /* Make rope border more visible in modals */
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -412,7 +734,7 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white shadow-md border-b border-gray-200 fixed w-full top-0 z-50">
+    <header class="header-flag-bg bg-white shadow-md border-b border-gray-200 fixed w-full top-0 z-50">
         <div class="px-6 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo and Brand -->
@@ -438,7 +760,7 @@
 
                 <!-- Profile Management -->
                 <div class="relative">
-                    <button onclick="toggleProfileMenu()" class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 rounded-lg px-4 py-2 transition-colors border border-gray-200">
+                    <button onclick="toggleProfileMenu()" class="rope-border flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 rounded-lg px-4 py-2 transition-colors">
                         <div id="headerProfilePicture" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
                             <img id="headerProfileImage" src="" alt="Profile" class="w-full h-full object-cover hidden">
                             <span id="headerProfileInitials" class="text-white text-sm font-medium">JD</span>
@@ -500,77 +822,77 @@
             <!-- Scrollable Navigation Container -->
             <div class="flex-1 overflow-y-auto">
                 <nav class="p-4 space-y-2">
-                    <button onclick="showSection('dashboard')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg bg-blue-50 text-blue-700 font-medium flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('dashboard')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg bg-blue-50 text-blue-700 font-medium flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"></path>
                         </svg>
-                        <span>Dashboard</span>
+                        <span class="relative z-10">Dashboard</span>
                     </button>
-                    <button onclick="showSection('reservations')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('reservations')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-4 8l-2-2m0 0l-2-2m2 2l2-2m-2 2l2 2"></path>
                         </svg>
-                        <span>Reservations</span>
+                        <span class="relative z-10">Reservations</span>
                     </button>
-                    <button onclick="showSection('venues')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('venues')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0H3"></path>
                         </svg>
-                        <span>Venues</span>
+                        <span class="relative z-10">Venues</span>
                     </button>
-                    <button onclick="showSection('usage-log')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('usage-log')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                         </svg>
-                        <span>Usage Log</span>
+                        <span class="relative z-10">Usage Log</span>
                     </button>
-                    <button onclick="showSection('messages')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('messages')" class="nav-item nav-traditional w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                         </svg>
-                        <span>Messages</span>
+                        <span class="relative z-10">Messages</span>
                         <div id="navUnreadIndicator" class="hidden absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></div>
                     </button>
-                    <button onclick="showSection('manage-users')" class="nav-item nav-admin w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('manage-users')" class="nav-item nav-admin w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
                         </svg>
-                        <span>Manage Users</span>
+                        <span class="relative z-10">Manage Users</span>
                     </button>
                     
                     <!-- New Navigation Items -->
-                    <button onclick="showSection('file-job-order')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('file-job-order')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
-                        <span>File Job Order</span>
+                        <span class="relative z-10">File Job Order</span>
                     </button>
-                    <button onclick="showSection('view-job-order')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('view-job-order')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                         </svg>
-                        <span>View Job Order</span>
+                        <span class="relative z-10">View Job Order</span>
                     </button>
-                    <button onclick="showSection('aircon-concerns')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('aircon-concerns')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM7 3H5a2 2 0 00-2 2v12a4 4 0 004 4h2a2 2 0 002-2V5a2 2 0 00-2-2z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9a2 2 0 012-2h6a2 2 0 012 2z"></path>
                         </svg>
-                        <span>Aircon Concerns</span>
+                        <span class="relative z-10">Aircon Concerns</span>
                     </button>
-                    <button onclick="showSection('view-ac-status')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('view-ac-status')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                         </svg>
-                        <span>View AC Status</span>
+                        <span class="relative z-10">View AC Status</span>
                     </button>
-                    <button onclick="showSection('request-water')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3" style="display: none;">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="showSection('request-water')" class="nav-item nav-general w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-3 relative" style="display: none; background-image: url('https://i.imgur.com/HKNaGIt.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                         </svg>
-                        <span>Request Water</span>
+                        <span class="relative z-10">Request Water</span>
                     </button>
                 </nav>
             </div>
@@ -849,8 +1171,8 @@
                                 <input type="text" id="messageInput" placeholder="Type your message..." 
                                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                        required>
-                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                                    <svg class="w-5 h-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <button type="submit" class="submit-button-bg text-white px-6 py-2 rounded-lg font-semibold transition-colors relative">
+                                    <svg class="w-5 h-5 rotate-90 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                                     </svg>
                                 </button>
@@ -987,9 +1309,9 @@
                         </div>
 
                         <div class="flex justify-end">
-                            <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center space-x-2">
-                                <i class="fas fa-paper-plane"></i>
-                                <span>Submit Job Order</span>
+                            <button type="submit" class="submit-button-bg px-6 py-3 text-white font-semibold rounded-lg transition-colors flex items-center space-x-2 relative">
+                                <i class="fas fa-paper-plane relative z-10"></i>
+                                <span class="relative z-10">Submit Job Order</span>
                             </button>
                         </div>
 
@@ -1236,9 +1558,9 @@
                             <button type="button" onclick="resetAirconForm()" class="px-6 py-3 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors">
                                 <i class="fas fa-undo mr-2"></i>Reset
                             </button>
-                            <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-semibold flex items-center space-x-2">
-                                <i class="fas fa-paper-plane"></i>
-                                <span>Submit Concern</span>
+                            <button type="submit" class="submit-button-bg px-6 py-3 text-white rounded-lg transition-colors font-semibold flex items-center space-x-2 relative">
+                                <i class="fas fa-paper-plane relative z-10"></i>
+                                <span class="relative z-10">Submit Concern</span>
                             </button>
                         </div>
 
@@ -1299,7 +1621,9 @@
                             <textarea name="instructions" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
                         </div>
                         <div class="flex justify-end space-x-3">
-                            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">Submit Request</button>
+                            <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                                <span class="relative z-10">Submit Request</span>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -1479,7 +1803,9 @@
                 <div class="p-6 border-t border-gray-200 flex-shrink-0">
                     <div class="flex justify-end space-x-3">
                         <button type="button" onclick="closeReservationModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">Submit</button>
+                        <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                            <span class="relative z-10">Submit</span>
+                        </button>
                     </div>
                     <div id="reservationMsg" class="text-sm mt-2"></div>
                 </div>
@@ -1542,7 +1868,9 @@
                 <div class="p-6 border-t border-gray-200 flex-shrink-0">
                     <div class="flex justify-end space-x-3">
                         <button type="button" onclick="closeProfileModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">Save Changes</button>
+                        <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                            <span class="relative z-10">Save Changes</span>
+                        </button>
                     </div>
                     <div id="profileMsg" class="text-sm mt-2"></div>
                 </div>
@@ -1836,7 +2164,9 @@
                 
                 <div class="p-6 border-t border-gray-200 flex justify-end space-x-3">
                     <button type="button" onclick="closeEditUsageModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">Update Event Log</button>
+                    <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg relative">
+                        <span class="relative z-10">Update Event Log</span>
+                    </button>
                 </div>
                 
                 <!-- Message area -->
@@ -1899,7 +2229,9 @@
                 <div class="p-6 border-t border-gray-200">
                     <div class="flex justify-end space-x-3">
                         <button type="button" onclick="closeAddVenueModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">Add Venue</button>
+                        <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                            <span class="relative z-10">Add Venue</span>
+                        </button>
                     </div>
                     <div id="addVenueMsg" class="text-sm mt-2"></div>
                 </div>
@@ -1946,7 +2278,9 @@
                 <div class="p-6 border-t border-gray-200">
                     <div class="flex justify-end space-x-3">
                         <button type="button" onclick="closeVenueAssignmentModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">Save Changes</button>
+                        <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                            <span class="relative z-10">Save Changes</span>
+                        </button>
                     </div>
                     <div id="venueAssignmentMsg" class="text-sm mt-2"></div>
                 </div>
@@ -2011,8 +2345,8 @@
                 <div class="p-6 border-t border-gray-200">
                     <div class="flex justify-end space-x-3">
                         <button type="button" onclick="closeACConcernEditModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
-                            <i class="fas fa-save mr-2"></i>Save Changes
+                        <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                            <i class="fas fa-save mr-2 relative z-10"></i><span class="relative z-10">Save Changes</span>
                         </button>
                     </div>
                     <div id="acConcernEditMsg" class="text-sm mt-2"></div>
@@ -2092,8 +2426,8 @@
                 <div class="p-6 border-t border-gray-200">
                     <div class="flex justify-end space-x-3">
                         <button type="button" onclick="closeAddUserModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors">
-                            <i class="fas fa-user-plus mr-2"></i>Create User
+                        <button type="submit" class="submit-button-bg px-4 py-2 text-white rounded-lg transition-colors relative">
+                            <i class="fas fa-user-plus mr-2 relative z-10"></i><span class="relative z-10">Create User</span>
                         </button>
                     </div>
                     <div id="addUserMsg" class="text-sm mt-2"></div>
@@ -2106,6 +2440,18 @@
         // ====== CONFIGURATION ======
         // Replace with your deployed Apps Script URL
         const GOOGLE_APPS_SCRIPT_URL_FORM = 'https://script.google.com/macros/s/AKfycbx9KxSx1JlgIOIvZVYG-RCMy_Njjul-TGKWcVwHtmWTX1gwpcuALP28Ws-HNqloq_a2cg/exec';
+        
+        // ====== COUNTRY FLAGS FOR JOB ORDER CARDS ======
+        const countryFlags = [
+            'flag-usa', 'flag-uk', 'flag-canada', 'flag-australia', 'flag-japan', 'flag-south-korea',
+            'flag-germany', 'flag-france', 'flag-italy', 'flag-spain', 'flag-brazil', 'flag-mexico',
+            'flag-india', 'flag-china', 'flag-russia', 'flag-netherlands', 'flag-sweden', 'flag-norway',
+            'flag-switzerland', 'flag-south-africa', 'flag-singapore', 'flag-thailand', 'flag-philippines'
+        ];
+
+        function getRandomFlagClass() {
+            return countryFlags[Math.floor(Math.random() * countryFlags.length)];
+        }
         
         // ====== LOADING OVERLAY UTILITIES ======
         let loadingProgress = 0;
@@ -7780,7 +8126,7 @@
             // Desktop table view
             if (tableBody) {
                 tableBody.innerHTML = orders.map((order, index) => `
-                    <tr class="hover:bg-gray-50 cursor-pointer" onclick="openJobOrderDetailsModal(${index})">
+                    <tr class="job-order-row ${getRandomFlagClass()} hover:bg-gray-50 cursor-pointer" onclick="openJobOrderDetailsModal(${index})">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${order.formNumber || 'N/A'}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(order.dateFiled)}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.department || 'N/A'}</td>
@@ -7806,20 +8152,20 @@
             // Mobile card view
             if (mobileContainer) {
                 mobileContainer.innerHTML = orders.map((order, index) => `
-                <div class="bg-white rounded-lg border border-gray-200 p-4 space-y-3 cursor-pointer hover:shadow-md transition-shadow" 
+                <div class="job-order-card ${getRandomFlagClass()}" 
                      onclick="openJobOrderDetailsModal(${index})">
                     <div class="flex justify-between items-start">
                         <div class="flex-1">
-                            <h3 class="font-semibold text-gray-900 text-sm">
+                            <h3 class="title">
                                 <i class="fas fa-file-alt mr-2 text-blue-600"></i>
                                 ${order.formNumber || 'N/A'}
                             </h3>
-                            <p class="text-xs text-gray-500 mt-1">
+                            <p class="subtitle">
                                 <i class="fas fa-calendar mr-1"></i>
                                 ${formatDate(order.dateFiled)}
                             </p>
                         </div>
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(order.status)}">
+                        <span class="status-badge ${getStatusColor(order.status)}">
                             ${order.status || 'Pending'}
                         </span>
                     </div>
@@ -9147,7 +9493,7 @@
     
     <!-- Job Order Edit Modal -->
     <div id="jobOrderEditModal" class="hidden fixed inset-0 bg-black bg-opacity-50 modal-backdrop z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-md mx-auto max-h-[90vh] overflow-hidden flex flex-col">
+        <div class="rope-border bg-white rounded-xl shadow-xl w-full max-w-md mx-auto max-h-[90vh] overflow-hidden flex flex-col">
             <div class="p-6 border-b border-gray-200 flex-shrink-0">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-semibold text-gray-900">Update Job Order Status</h3>
@@ -9219,9 +9565,9 @@
     </div>
     
     <!-- Job Order Details Modal -->
-    <div id="jobOrderDetailsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 modal-backdrop z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl mx-auto max-h-[90vh] overflow-hidden flex flex-col">
-            <div class="p-6 border-b border-gray-200 flex-shrink-0">
+    <div id="jobOrderDetailsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 modal-backdrop z-50 flex items-center justify-center p-8">
+        <div class="rope-border bg-white rounded-xl shadow-xl w-full max-w-2xl mx-auto max-h-[85vh] flex flex-col">
+            <div class="p-6 border-b border-gray-200 flex-shrink-0 rounded-t-xl overflow-hidden">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-semibold text-gray-900">Job Order Details</h3>
                     <button onclick="closeJobOrderDetailsModal()" class="text-gray-400 hover:text-gray-600">
