@@ -21,6 +21,25 @@
     <style>
         .auth-bg {
             background: white;
+            background-image: url('https://edp.usjr.edu.ph/public/images/usjr_trans.png');
+            background-repeat: repeat;
+            background-size: 150px auto;
+            position: relative;
+        }
+        .auth-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            opacity: 0.9;
+            z-index: 0;
+        }
+        .auth-bg > * {
+            position: relative;
+            z-index: 1;
         }
         .glass-effect {
             backdrop-filter: blur(10px);
@@ -64,6 +83,118 @@
         .slide-in {
             animation: slideIn 0.3s ease-out;
         }
+        
+        /* Vertical Wooden Texture - Realistic Wood Planks */
+        .wooden-container {
+            background: rgb(233,223,196);
+            background: -moz-linear-gradient(left, 
+                rgba(233,223,196,1) 0%, 
+                rgba(233,223,196,1) 1%, 
+                rgba(237,227,200,1) 2%, 
+                rgba(237,227,200,1) 24%, 
+                rgba(235,221,195,1) 25%, 
+                rgba(233,223,196,1) 48%, 
+                rgba(235,221,195,1) 49%, 
+                rgba(230,216,189,1) 52%, 
+                rgba(230,216,189,1) 53%, 
+                rgba(233,219,192,1) 54%, 
+                rgba(230,216,189,1) 55%, 
+                rgba(230,216,189,1) 56%, 
+                rgba(233,219,192,1) 57%, 
+                rgba(230,216,189,1) 58%, 
+                rgba(230,216,189,1) 73%, 
+                rgba(233,219,192,1) 74%, 
+                rgba(233,219,192,1) 98%, 
+                rgba(235,221,195,1) 100%
+            );
+            background: -webkit-linear-gradient(left, 
+                rgba(233,223,196,1) 0%,
+                rgba(233,223,196,1) 1%,
+                rgba(237,227,200,1) 2%,
+                rgba(237,227,200,1) 24%,
+                rgba(235,221,195,1) 25%,
+                rgba(233,223,196,1) 48%,
+                rgba(235,221,195,1) 49%,
+                rgba(230,216,189,1) 52%,
+                rgba(230,216,189,1) 53%,
+                rgba(233,219,192,1) 54%,
+                rgba(230,216,189,1) 55%,
+                rgba(230,216,189,1) 56%,
+                rgba(233,219,192,1) 57%,
+                rgba(230,216,189,1) 58%,
+                rgba(230,216,189,1) 73%,
+                rgba(233,219,192,1) 74%,
+                rgba(233,219,192,1) 98%,
+                rgba(235,221,195,1) 100%
+            );
+            background: linear-gradient(to right, 
+                rgba(233,223,196,1) 0%,
+                rgba(233,223,196,1) 1%,
+                rgba(237,227,200,1) 2%,
+                rgba(237,227,200,1) 24%,
+                rgba(235,221,195,1) 25%,
+                rgba(233,223,196,1) 48%,
+                rgba(235,221,195,1) 49%,
+                rgba(230,216,189,1) 52%,
+                rgba(230,216,189,1) 53%,
+                rgba(233,219,192,1) 54%,
+                rgba(230,216,189,1) 55%,
+                rgba(230,216,189,1) 56%,
+                rgba(233,219,192,1) 57%,
+                rgba(230,216,189,1) 58%,
+                rgba(230,216,189,1) 73%,
+                rgba(233,219,192,1) 74%,
+                rgba(233,219,192,1) 98%,
+                rgba(235,221,195,1) 100%
+            );
+            background-size: 120px 100%;
+            background-repeat: repeat-x;
+            position: relative;
+        }
+        
+        .wooden-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg,
+                transparent 0px,
+                rgba(0,0,0,0.03) 1px,
+                transparent 2px,
+                rgba(0,0,0,0.02) 4px,
+                transparent 6px
+            );
+            background-size: 100% 6px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .wooden-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(90deg,
+                transparent 0px,
+                transparent 118px,
+                rgba(0,0,0,0.1) 119px,
+                rgba(0,0,0,0.2) 120px,
+                rgba(0,0,0,0.1) 121px,
+                transparent 122px
+            );
+            background-size: 120px 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .wooden-container > * {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 <body class="auth-bg min-h-screen flex items-center justify-center p-4">
@@ -95,36 +226,39 @@
             </div>
         </div>
 
-        <!-- Logo Section -->
+        <!-- Logo Section 
         <div class="text-center mb-8">
             <img src="https://edp.usjr.edu.ph/public/images/usjr_trans.png" style="display: block; border: 6px solid red !important; margin: 0 auto;">
             <h1 class="text-3xl font-bold text-usjr-green mb-2">Property - Basak</h1>
             <p class="text-gray-700">VJOMS</p>
-        </div>
+        </div>-->
+
+        <!-- Logo at the top 
+        <img src="https://i.imgur.com/uj9koRn.png" alt="Portal Logo" class="max-w-md w-full h-auto mx-auto mb-6 mt-8 block absolute -top-11 left-1/2 transform -translate-x-1/2 -translate-y-1/2">   -->
 
         <!-- Auth Form Container -->
-        <div class="bg-white max-w-md w-full mx-auto shadow-2xl">
+        <div class="bg-white max-w-md w-full mx-auto shadow-2xl wooden-container">
             <!-- Header -->
-            <div id="formHeader" class="bg-usjr-green text-white p-6 text-center">
-                <h1 class="text-2xl font-bold">PORTAL</h1>
-                <p id="headerSubtext" class="text-sm opacity-90 mt-1">Sign in to your account</p>
+            <div id="formHeader" class="bg-usjr-whitetext-white p-6 text-center relative" style="background-image: url('https://i.imgur.com/zlx3FGW.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                <h1 class="text-2xl font-bold relative z-10">PORTAL</h1>
+                <p id="headerSubtext" class="text-sm opacity-90 mt-1 relative z-10">Sign in to your account</p>
             </div>
             
             <!-- Login Form -->
             <div id="loginForm" class="p-6 slide-in">
                 <form id="loginFormElement">
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Username</label>
+                        <label class="block text-white-700 text-sm font-medium mb-2">Username</label>
                         <input type="text" name="username" required class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-usjr-green transition-colors">
                     </div>
                     
                     <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                        <label class="block text-white-700 text-sm font-medium mb-2">Password</label>
                         <input type="password" name="password" required class="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-usjr-green transition-colors">
                     </div>
                     
-                    <button type="submit" class="w-full bg-usjr-green text-white py-2 font-medium hover:bg-opacity-90 transition-colors mb-4">
-                        SIGN IN
+                    <button type="submit" class="w-full bg-usjr-whitetext-white py-2 font-medium hover:bg-opacity-90 transition-colors mb-4 relative" style="background-image: url('https://i.imgur.com/jq1xaI4.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <span class="relative z-10">SIGN IN</span>
                     </button>
                     
                     <div id="loginMessage" class="mb-4 text-center text-sm"></div>
