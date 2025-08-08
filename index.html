@@ -8101,104 +8101,51 @@
         // Display job orders in table and mobile cards
         function displayJobOrders(orders) {
             const tableBody = document.getElementById('jobOrdersTableBody');
-            const mobileContainer = document.getElementById('jobOrdersCardView');
             const emptyDiv = document.getElementById('jobOrdersEmpty');
-            const countElement = document.getElementById('jobOrdersCount');
-            
-            // Update count
-            if (countElement) {
-                const totalCount = originalJobOrders.length;
-                const displayedCount = orders.length;
-                if (totalCount === displayedCount) {
-                    countElement.textContent = `${totalCount} job order${totalCount !== 1 ? 's' : ''}`;
-                } else {
-                    countElement.textContent = `${displayedCount} of ${totalCount} job order${totalCount !== 1 ? 's' : ''} (filtered)`;
-                }
-            }
             
             if (!orders || orders.length === 0) {
                 showEmptyJobOrders();
                 return;
             }
 
-            emptyDiv.classList.add('hidden');            // Store orders globally for mobile card access
-            window.currentJobOrders = orders;
+            emptyDiv.classList.add('hidden');
             
-            // Desktop table view
-            if (tableBody) {
-                tableBody.innerHTML = orders.map((order, index) => `
-                    <tr class="job-order-row ${getRandomFlagClass()} hover:bg-gray-50 cursor-pointer" onclick="openJobOrderDetailsModal(${index})">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${order.formNumber || 'N/A'}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(order.dateFiled)}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.department || 'N/A'}</td>
-                        <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate" title="${order.location || 'N/A'}">${order.location || 'N/A'}</td>
-                        <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate" title="${order.natureOfWork || 'N/A'}">${order.natureOfWork || 'N/A'}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.requestedBy || 'N/A'}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(order.status)}">
-                                ${order.status || 'Pending'}
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <button onclick="event.stopPropagation(); openJobOrderDetailsModal(${index})" class="text-blue-600 hover:text-blue-700 mr-2" title="View Details">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button onclick="event.stopPropagation(); printJobOrder('${order.formNumber}').catch(console.error)" class="text-green-600 hover:text-green-700" title="Print">
-                                <i class="fas fa-print"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `).join('');
-            }
+            // Clear existing content
+            tableBody.innerHTML = '';
             
-            // Mobile card view
-            if (mobileContainer) {
-                mobileContainer.innerHTML = orders.map((order, index) => `
-                <div class="job-order-card ${getRandomFlagClass()}" 
-                     onclick="openJobOrderDetailsModal(${index})">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="title">
-                                <i class="fas fa-file-alt mr-2 text-blue-600"></i>
-                                ${order.formNumber || 'N/A'}
-                            </h3>
-                            <p class="subtitle">
-                                <i class="fas fa-calendar mr-1"></i>
-                                ${formatDate(order.dateFiled)}
-                            </p>
-                        </div>
-                        <span class="status-badge ${getStatusColor(order.status)}">
+            // Add each job order as a table row
+            orders.forEach((order, index) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50 cursor-pointer';
+                row.onclick = () => openJobOrderDetailsModal(index);
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${order.formNumber || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(order.dateFiled)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.department || 'N/A'}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900">${order.location || 'N/A'}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900">${order.natureOfWork || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${order.requestedBy || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(order.status)}">
                             ${order.status || 'Pending'}
                         </span>
-                    </div>
-                    
-                    <div class="space-y-2">
-                        <div class="flex items-center text-xs text-gray-600">
-                            <i class="fas fa-building mr-2 text-gray-400 w-4"></i>
-                            <span class="truncate">${order.department || 'N/A'}</span>
-                        </div>
-                        
-                        <div class="flex items-center text-xs text-gray-600">
-                            <i class="fas fa-location-dot mr-2 text-orange-500 w-4"></i>
-                            <span class="truncate font-medium">${order.location || 'No location specified'}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
-                        <div class="text-xs text-gray-500 flex items-center">
-                            <i class="fas fa-user mr-1"></i>
-                            <span class="truncate">${order.requestedBy || 'N/A'}</span>
-                        </div>
-                        <div class="flex space-x-2">
-                            <div class="text-xs text-blue-600 flex items-center">
-                                <i class="fas fa-eye mr-1"></i>
-                                <span>View Details</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-            }
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="event.stopPropagation(); openJobOrderDetailsModal(${index})" class="text-blue-600 hover:text-blue-700 mr-2">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button onclick="event.stopPropagation(); printJobOrder('${order.formNumber}')" class="text-green-600 hover:text-green-700">
+                            <i class="fas fa-print"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Store orders globally for access
+            window.currentJobOrders = orders;
         }
         
         // Show empty state
