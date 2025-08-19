@@ -2794,7 +2794,7 @@ function generateJobOrderPrintContent(formData) {
                 <label for="notedBy1">Noted by: Campus Planning Head</label>
               </div>
               <div>
-                <div class="name">Rev. Fr. Leander V. Barrot, OAR</div>
+                <div class="name">Rev. Fr. Vicente L. Ramon,Jr., OAR</div>
                 <div class="line"></div>
                 <label for="approvedBy1">Approved by</label>
               </div>
@@ -3034,4 +3034,5 @@ function getAnnouncement() {
     Logger.log('Error in getAnnouncement: ' + error.message);
     return { success: false, error: error.toString() };
   }
+
 }
